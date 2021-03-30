@@ -1,16 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
-import {View, Text} from 'react-native'
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { StyleSheet, Text, View, FlatList, SafeAreaView } from 'react-native';
+
+// Requests endpoint
+import requests from './requests'
+import axios from './axios'
 
 export default function App() {
-  const [data, setData] = useState([])
+  const [stocks, setStocks] = useState([])
+
+  const getStocks = async () => {
+      const request = await axios.get(`/stock/symbol?exchange=US&token=c1h5do748v6t9ghtn9l0`)
+      //console.log(request.data)
+      setStocks(request.data)
+      console.log(stocks)
+  }
+
+  useEffect(() => {
+    getStocks();
+  }, [])
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+      <FlatList 
+        data={stocks}
+        keyExtractor={stock=> stock.symbol}
+        renderItem={({ item }) => {
+          return <Text>{item.description}</Text>
+        }}
+      />
+    </SafeAreaView>
   );
 }
 
