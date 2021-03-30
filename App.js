@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 
-import SearchScreen from './screens/searchScreen/searchScreen'
+import SearchScreen from './src/screens/searchScreen/searchScreen'
 
 const App = () => {
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
         <SearchScreen />
     </SafeAreaView>
   );
