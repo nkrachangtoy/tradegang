@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, FlatList, SafeAreaView } from 'react-native';
 
@@ -10,10 +9,10 @@ export default function App() {
   const [stocks, setStocks] = useState([])
 
   const getStocks = async () => {
-      const request = await axios.get(`/stock/symbol?exchange=US&token=c1h5do748v6t9ghtn9l0`)
+      const request = await axios.get(`/stock/symbol?exchange=US&token=${process.env.API_KEY}`)
       //console.log(request.data)
       setStocks(request.data)
-      console.log(stocks)
+      //console.log(stocks)
   }
 
   useEffect(() => {
