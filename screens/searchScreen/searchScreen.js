@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import SearchBar from '../../components/searchBar'
 
 const searchScreen = () => {
+    const [quote, setQuote] = useState('')
+
     return (
         <View>
-            <Text></Text>
+            <SearchBar />
         </View>
     )
 }
