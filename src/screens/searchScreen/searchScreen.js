@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+
+// Components
 import SearchBar from '../../components/searchBar'
 import SearchResult from '../../components/searchResult'
 
 // Requests endpoint
-import axios from '../../axios'
+import finnhub from '../../api/finnhub'
+import requests from '../../api/requests'
 
 const searchScreen = () => {
     const [symbol, setSymbol] = useState('')
@@ -12,7 +15,8 @@ const searchScreen = () => {
   
   
     const searchAPI = async () => {
-      const request = await axios.get(`/quote?symbol=${symbol.toUpperCase()}&token=c1h5do748v6t9ghtn9l0`)
+      // const request = await finnhub.get(requests.searchBySymbol`${symbol.toUpperCase()}`)
+      const request = await finnhub.get(`/quote?symbol=${symbol.toUpperCase()}`)
       //console.log(request.data)
       setcurrentPrice(request.data.c)
     }
