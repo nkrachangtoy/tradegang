@@ -1,28 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import {SafeAreaProvider} from 'react-native-safe-area-context'
+import {NavigationContainer} from '@react-navigation/native'
+import {createStackNavigator} from '@react-navigation/stack'
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 
 // Screens
 import SearchScreen from './src/screens/searchScreen/searchScreen'
 import SignUpScreen from './src/screens/signUpScreen/signUpScreen'
 import LoginScreen from './src/screens/loginScreen/loginScreen'
-import homeScreen from './src/screens/homeScreen/homeScreen'
+import HomeScreen from './src/screens/homeScreen/homeScreen'
+
+const Stack = createStackNavigator()
+
 const App = () => {
 
   return (
-    <SafeAreaProvider style={styles.container}>
-        {/* <SearchScreen /> */}
-        {/* <SignUpScreen /> */}
-        <LoginScreen />
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home" >
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} screenOptions={{
+          headerShown: false
+        }}/>
+          <Stack.Screen name="Signup" component={SignUpScreen} screenOptions={{
+          headerShown: false
+        }}/>
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-  },
-});
 
 export default App
