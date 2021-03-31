@@ -30,6 +30,7 @@ const App = () => {
         <Stack.Screen name="Signup" component={SignUpScreen} options={{
           headerShown: false
         }}/>
+        <Stack.Screen name="Search" component={SearchScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
