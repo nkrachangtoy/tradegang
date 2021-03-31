@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import { AntDesign, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'; 
 
@@ -27,11 +27,11 @@ const signUpForm = () => {
                     <TextInput placeholder='Confirm Password' style={styles.input} placeholderTextColor="#D8D8D8" secureTextEntry={true}>
                 </TextInput>
                 </View>
-                <Button 
-                    title="Submit"
+                <TouchableOpacity 
                     style={styles.button}
-                    color= 'white'
-                />
+                >
+                    <Text style={styles.buttonText}>Login</Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     )
@@ -87,5 +87,14 @@ const styles = StyleSheet.create({
     button: {
         flex: 1,
         height: 48,
+        backgroundColor: '#67D9FA',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 18
+    },
+    buttonText: {
+        color: '#fff',
+        fontWeight: '500',
+        fontSize: 18
     }
 })

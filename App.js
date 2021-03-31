@@ -1,6 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context'
+import {NavigationContainer} from '@react-navigation/native'
+import {createStackNavigator} from '@react-navigation/stack'
+
+const Stack = createStackNavigator()
 
 // Screens
 import SearchScreen from './src/screens/searchScreen/searchScreen'
