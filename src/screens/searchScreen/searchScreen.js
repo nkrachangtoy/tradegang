@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import {SafeAreaView} from 'react-native-safe-area-context'
 
 // Components
 import SearchBar from '../../components/searchBar'
@@ -28,7 +29,7 @@ const searchScreen = () => {
     }, [])
 
     return (
-        <View style={styles.background}>
+        <SafeAreaView style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
             <SearchBar 
                 autoCorrect={false}
                 round
@@ -37,19 +38,11 @@ const searchScreen = () => {
                 // pass the api call trigger as a prop 
                 onSymbolSubmit={() => searchAPI()}
             />
-            <SearchResult price={currentPrice}/>
-        </View>
+            <Text style={{fontSize: 20, fontWeight: '900', color: '#fff'}}>Results</Text>
+            <SearchResult price={currentPrice} symbol={symbol}/>
+        </SafeAreaView>
     )
 }
 
 export default searchScreen
 
-const styles = StyleSheet.create({
-    background: {
-        height: 50,
-        borderRadius: 6,
-        marginHorizontal: 15,
-        flexDirection: 'row',
-        alignItems: 'center'
-      },
-})

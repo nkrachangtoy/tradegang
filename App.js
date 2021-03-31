@@ -18,7 +18,8 @@ const App = () => {
 
   const logOut = async () => {
     const response = await firebase.auth().signOut()
-    .then(() => console.log('User signed out!')) 
+    .then(() => console.log('User signed out!'))
+
     .catch(error => {
         console.error(error);
     });
@@ -44,6 +45,12 @@ const App = () => {
         name="Search" 
         component={SearchScreen} 
         options={{
+          title: 'Search',
+          headerStyle: {
+            backgroundColor: '#16171C'
+          },
+          headerTintColor: '#fff',
+          headerLeft: null,
           headerRight: () => (
             <Button
               onPress={() => logOut()}
