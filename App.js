@@ -2,6 +2,8 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import firebase from './firebase/firebaseConfig'
+import {Button} from 'react-native'
 
 
 // Screens
@@ -13,6 +15,14 @@ import HomeScreen from './src/screens/homeScreen/homeScreen'
 const Stack = createStackNavigator()
 
 const App = () => {
+
+  const logOut = async () => {
+    const response = await firebase.auth().signOut()
+    .then(() => console.log('User signed out!')) 
+    .catch(error => {
+        console.error(error);
+    });
+  }
 
   return (
     <SafeAreaProvider >
@@ -30,7 +40,17 @@ const App = () => {
         <Stack.Screen name="Signup" component={SignUpScreen} options={{
           headerShown: false
         }}/>
-        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen 
+        name="Search" 
+        component={SearchScreen} 
+        options={{
+          headerRight: () => (
+            <Button
+              onPress={() => logOut()}
+              title="Logout"
+            />
+          )}}
+        />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
