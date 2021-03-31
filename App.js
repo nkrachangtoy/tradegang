@@ -21,15 +21,15 @@ const App = () => {
           cardStyle: { backgroundColor: '#000' }
         }}
         >
-          <Stack.Screen name="Home" component={HomeScreen} options={{
-    headerShown: false
-}}/>
-          <Stack.Screen name="Login" component={LoginScreen} options={{
-    headerShown: false
-}}/>
-          <Stack.Screen name="Signup" component={SignUpScreen} options={{
-    headerShown: false
-}}/>
+        <Stack.Screen name="Home" component={HomeScreen} options={{
+          headerShown: false
+        }}/>
+        <Stack.Screen name="Login" component={LoginScreen} options={{
+          headerShown: false
+        }}/>
+        <Stack.Screen name="Signup" component={SignUpScreen} options={{
+          headerShown: false
+        }}/>
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
