@@ -21,7 +21,7 @@ const searchScreen = () => {
       setcurrentPrice(request.data.c)
     }
 
-    console.log(currentPrice)
+    //console.log(currentPrice)
   
     useEffect(() => {
       searchAPI();
