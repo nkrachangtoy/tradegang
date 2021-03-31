@@ -7,10 +7,11 @@ const searchBar = ({symbol, onSymbolChange, onSymbolSubmit}) => {
     
 
     return (
-        <View style={styles.background}>
-            <EvilIcons style={styles.icon} name="search" size={35} />
+        <View style={styles.inputBox}>
+            <EvilIcons style={styles.icon} name="search" size={24} color='#fff' />
             <TextInput 
-            //style={styles.input}
+            style={styles.input} 
+            placeholderTextColor="#D8D8D8"
             value={symbol}
             placeholder="Search"
             // when the text changes update the state variable
@@ -24,19 +25,25 @@ const searchBar = ({symbol, onSymbolChange, onSymbolSubmit}) => {
 export default searchBar
 
 const styles = StyleSheet.create({
-    background: {
-        height: 50,
-        borderRadius: 6,
-        marginHorizontal: 15,
-        flexDirection: 'row',
-        alignItems: 'center'
-      },
-      input: {
-        flex: 1
+      input:{
+        color: '#D8D8D8',
+        fontSize: 18,
+        marginLeft: 15
       },
       icon: {
-        fontSize: 35,
         alignSelf: 'center',
         marginHorizontal: 15
-      }
+      },
+      inputBox: {
+        backgroundColor: "#2E3249",
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: '#4B5378',
+        height: 56,
+        width: 311,
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 17,
+        marginBottom: 20
+    },
 });
