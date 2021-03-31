@@ -1,12 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 
-const loginForm = () => {
+const loginForm = ({navigation}) => {
     return (
-        <SafeAreaView>
+        <SafeAreaView >
             <View style={styles.headerContainer}>
                 <Text style={styles.title}>Welcom to</Text>
                 <Text style={styles.title}>TradeGang</Text>
@@ -23,11 +23,16 @@ const loginForm = () => {
                 </TextInput>
                 </View>
                 <Text style={{color: '#fff', fontSize: 16}}>Forgot password?</Text>
-                <Button 
-                    title="Login"
+                <TouchableOpacity 
                     style={styles.button}
-                    color= 'white'
-                />
+                >
+                    <Text style={{color: '#fff', fontSize: 16, fontWeight: '500'}}>Login</Text>
+                </TouchableOpacity>
+                <TouchableOpacity  onPress={()=>{
+                navigation.navigate('Signup')
+                }}>
+                <Text style={styles.link}>Signup</Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     )
@@ -83,6 +88,11 @@ const styles = StyleSheet.create({
     button: {
         flex: 1,
         height: 48,
+        backgroundColor: '#67D9FA',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 50
     },
+
 })
 
