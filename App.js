@@ -5,13 +5,14 @@ import {SafeAreaProvider} from 'react-native-safe-area-context'
 // Screens
 import SearchScreen from './src/screens/searchScreen/searchScreen'
 import SignUpScreen from './src/screens/signUpScreen/signUpScreen'
-
+import LoginScreen from './src/screens/loginScreen/loginScreen'
 const App = () => {
 
   return (
     <SafeAreaProvider style={styles.container}>
         {/* <SearchScreen /> */}
-        <SignUpScreen />
+        {/* <SignUpScreen /> */}
+        <LoginScreen />
     </SafeAreaProvider>
   );
 }
