@@ -3,13 +3,18 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 import {SafeAreaView} from 'react-native-safe-area-context'
 import { AntDesign, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'; 
 
-const signUpForm = () => {
+const signUpForm = ({navigation}) => {
     return (
         <SafeAreaView>
             <View style={styles.headerContainer}>
                 <Text style={styles.title}>Sign up</Text>
                 <Text style={styles.subTitle}>Already have an account?</Text>
+                <TouchableOpacity  onPress={()=>{
+                navigation.navigate('Login')
+                }}>
                 <Text style={styles.link}>Sign in</Text>
+                </TouchableOpacity>
+                
             </View>
             <View style={styles.formContainer}>
                 <View style={styles.inputBox}>
@@ -30,7 +35,7 @@ const signUpForm = () => {
                 <TouchableOpacity 
                     style={styles.button}
                 >
-                    <Text style={styles.buttonText}>Login</Text>
+                    <Text style={{color: '#fff', fontSize: 16, fontWeight: '500'}}>Login</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
@@ -90,11 +95,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#67D9FA',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 18
+        borderRadius: 50
     },
-    buttonText: {
-        color: '#fff',
-        fontWeight: '500',
-        fontSize: 18
-    }
 })

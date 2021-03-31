@@ -1,12 +1,14 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet} from 'react-native'
 import SignUpForm from '../../components/signUpForm'
+import {SafeAreaView} from 'react-native-safe-area-context'
 
-const signUpScreen = () => {
+
+const signUpScreen = ({navigation}) => {
     return (
-        <View>
-            <SignUpForm />
-        </View>
+        <SafeAreaView>
+            <SignUpForm navigation={navigation}/>
+        </SafeAreaView>
     )
 }
 
