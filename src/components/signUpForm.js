@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
-import  auth  from '@react-native-firebase/auth'
+//import  auth  from '@react-native-firebase/auth'
 import firebase from '../../firebase/firebaseConfig'
 import { AntDesign, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'; 
 
@@ -10,24 +10,24 @@ const signUpForm = ({navigation}) => {
     const [password, setPassword] = useState('')
     
 
-    // const signUp = async() => {
-    //     const response = await firebase.auth().createUserWithEmailAndPassword(email, password)
-    //     .then(() => {
-    //         console.log('User account created & signed in!');
-    //         navigation.navigate('Login')
-    //     })
-    //     .catch(error => {
-    //         if (error.code === 'auth/email-already-in-use') {
-    //         console.log('That email address is already in use!');
-    //         }
+    const signUp = async () => {
+        const response = await firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(() => {
+            console.log('User account created & signed in!');
+            navigation.navigate('Login')
+        })
+        .catch(error => {
+            if (error.code === 'auth/email-already-in-use') {
+            console.log('That email address is already in use!');
+            }
 
-    //         if (error.code === 'auth/invalid-email') {
-    //         console.log('That email address is invalid!');
-    //         }
+            if (error.code === 'auth/invalid-email') {
+            console.log('That email address is invalid!');
+            }
 
-    //         console.error(error);
-    //     });
-    // }
+            console.error(error);
+        });
+    }
 
 
 
@@ -48,7 +48,6 @@ const signUpForm = ({navigation}) => {
                     <AntDesign name="user" size={24} style={styles.icons} />
                     <TextInput 
                         value={email}
-                        autoCapitalize={false}  
                         placeholder='Email' 
                         style={styles.input} 
                         placeholderTextColor="#D8D8D8"
@@ -60,7 +59,6 @@ const signUpForm = ({navigation}) => {
                     <MaterialCommunityIcons name="email-outline" size={24} style={styles.icons} />
                     <TextInput 
                         value={password}
-                        autoCapitalize={false} 
                         placeholder='Password' 
                         style={styles.input} 
                         placeholderTextColor="#D8D8D8" 
@@ -69,14 +67,9 @@ const signUpForm = ({navigation}) => {
                     >
                 </TextInput>
                 </View>
-                {/* Will add validation here */}
-                {/* <View style={styles.inputBox}>
-                    <Ionicons name="key-outline" size={24} style={styles.icons} />
-                    <TextInput placeholder='Confirm Password' style={styles.input} placeholderTextColor="#D8D8D8" secureTextEntry={true}>
-                </TextInput>
-                </View> */}
                 <TouchableOpacity 
                     style={styles.button}
+                    onPress={()=>{signUp()}}
                 >
                     <Text style={{color: '#fff', fontSize: 16, fontWeight: '500'}}>Sign up</Text>
                 </TouchableOpacity>

@@ -1,4 +1,4 @@
-import * as firebase from '@react-native-firebase/app'
+import * as firebase from 'firebase'
 import {FIREBASE_API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID} from '@env'
 
 const firebaseConfig = {
@@ -10,7 +10,6 @@ const firebaseConfig = {
     appId: APP_ID
   };
 
-  if(!firebase.apps.length){
-    firebase.initializeApp(firebaseConfig)
-  }
+  firebase.initializeApp(firebaseConfig)
+
 export default firebase
