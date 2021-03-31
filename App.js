@@ -15,16 +15,21 @@ const Stack = createStackNavigator()
 const App = () => {
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider >
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home" >
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Login" component={LoginScreen} screenOptions={{
-          headerShown: false
-        }}/>
-          <Stack.Screen name="Signup" component={SignUpScreen} screenOptions={{
-          headerShown: false
-        }}/>
+        <Stack.Navigator initialRouteName="Home" screenOptions={{
+          cardStyle: { backgroundColor: '#000' }
+        }}
+        >
+          <Stack.Screen name="Home" component={HomeScreen} options={{
+    headerShown: false
+}}/>
+          <Stack.Screen name="Login" component={LoginScreen} options={{
+    headerShown: false
+}}/>
+          <Stack.Screen name="Signup" component={SignUpScreen} options={{
+    headerShown: false
+}}/>
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

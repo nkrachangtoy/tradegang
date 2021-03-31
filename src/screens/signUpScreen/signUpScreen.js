@@ -4,10 +4,10 @@ import SignUpForm from '../../components/signUpForm'
 import {SafeAreaView} from 'react-native-safe-area-context'
 
 
-const signUpScreen = () => {
+const signUpScreen = ({navigation}) => {
     return (
         <SafeAreaView>
-            <SignUpForm />
+            <SignUpForm navigation={navigation}/>
         </SafeAreaView>
     )
 }
