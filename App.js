@@ -6,6 +6,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context'
 import SearchScreen from './src/screens/searchScreen/searchScreen'
 import SignUpScreen from './src/screens/signUpScreen/signUpScreen'
 import LoginScreen from './src/screens/loginScreen/loginScreen'
+import homeScreen from './src/screens/homeScreen/homeScreen'
 const App = () => {
 
   return (
