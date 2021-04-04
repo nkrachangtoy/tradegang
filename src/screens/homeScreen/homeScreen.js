@@ -1,54 +1,22 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
-const homeScreen = ({navigation}) => {
+import { View, Text } from 'react-native'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+
+
+// Components
+import SearchScreen from '../searchScreen/searchScreen'
+import PortfolioScreen from '../portfolioScreen/portfolioScreen'
+import WatchlistScreen from '../WatchlistScreen/WatchlistScreen'
+const Tab = createBottomTabNavigator()
+
+const homeScreen = () => {
     return (
-        <SafeAreaView style={{alignItems: 'center'}}>
-            <View style={styles.headerContainer}>
-                <Text style={styles.title}>Welcom to</Text>
-                <Text style={styles.title}>TradeGang</Text>
-            </View>
-            <View style={styles.buttonsWrapper}>
-            <TouchableOpacity style={styles.button} onPress={()=>{
-                navigation.navigate('Login')
-            }}>
-                <Text style={{color: '#fff', fontSize: 16, fontWeight: '500'}}>Login</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={()=>{
-                navigation.navigate('Signup')
-            }}>
-                <Text style={{color: '#fff', fontSize: 16, fontWeight: '500'}}>Signup</Text>
-            </TouchableOpacity>
-            </View>
-        </SafeAreaView>
+        <Tab.Navigator screenOptions={{cardStyle: {backgroundColor: '#000'}}}>
+            <Tab.Screen name="Search" component={SearchScreen} />
+            <Tab.Screen name="Watchlist" component={WatchlistScreen} />
+            <Tab.Screen name="Portfolio" component={PortfolioScreen} />
+        </Tab.Navigator>
     )
 }
 
 export default homeScreen
-
-const styles = StyleSheet.create({
-    button: {
-        height: 48,
-        width: 209,
-        backgroundColor: '#67D9FA',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 16,
-        borderRadius: 50
-    },
-    title: {
-        fontWeight: "900",
-        fontSize: 36,
-        color: '#fff'
-    },
-    headerContainer: {
-        position: 'absolute',
-        top: 137,
-        left: 32,
-    },
-    buttonsWrapper:{
-        flexDirection: 'column',
-        position: 'absolute',
-        top: 332
-    }
-})
