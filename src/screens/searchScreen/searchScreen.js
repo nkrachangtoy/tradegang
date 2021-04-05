@@ -8,7 +8,7 @@ import SearchResult from '../../components/searchResult'
 
 // Requests endpoint
 import finnhub from '../../api/finnhub'
-import requests from '../../api/requests'
+//import requests from '../../api/requests'
 
 const searchScreen = () => {
     const [symbol, setSymbol] = useState('')
