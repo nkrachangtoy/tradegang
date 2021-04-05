@@ -14,7 +14,7 @@ const loginForm = ({navigation}) => {
         const response = await firebase.auth().signInWithEmailAndPassword(email.trim(), password)
         .then(() => {
             console.log('User account signed in!');
-            navigation.navigate('Search')
+            navigation.navigate('Home')
         })
         .catch(error => {
             console.error(error);

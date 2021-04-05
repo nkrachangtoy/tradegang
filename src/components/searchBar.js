@@ -10,6 +10,7 @@ const searchBar = ({symbol, onSymbolChange, onSymbolSubmit}) => {
         <View style={styles.inputBox}>
             <EvilIcons style={styles.icon} name="search" size={24} color='#fff' />
             <TextInput 
+            autoCorrect={false}
             style={styles.input} 
             placeholderTextColor="#D8D8D8"
             value={symbol}

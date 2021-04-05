@@ -29,17 +29,16 @@ const searchScreen = () => {
     }, [])
 
     return (
-        <SafeAreaView style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+        <SafeAreaView style={{flex: 1, flexDirection: 'column', alignItems: 'center', backgroundColor: '#16171C'}}>
             <SearchBar 
-                autoCorrect={false}
-                round
                 symbol={symbol}
                 onSymbolChange={newSymbol => setSymbol(newSymbol)}
                 // pass the api call trigger as a prop 
                 onSymbolSubmit={() => searchAPI()}
             />
             <Text style={{fontSize: 20, fontWeight: '900', color: '#fff'}}>Results</Text>
-            <SearchResult price={currentPrice} symbol={symbol}/>
+            { symbol === '' ?  <View></View> : <SearchResult price={currentPrice} symbol={symbol}/>}
+           
         </SafeAreaView>
     )
 }
