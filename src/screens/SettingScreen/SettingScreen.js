@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import firebase from '../../../firebase/firebaseConfig'
 import userdata from '../../api/userdata'
@@ -36,19 +36,20 @@ const SettingScreen = ({navigation}) => {
     return (
         <SafeAreaView style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#16171C'}}>
             {fetching ? 
-                <Text>Loading..</Text> 
+                <ActivityIndicator size='small' color='#67D9FA' />
                 :  
                 <View>
                     <Text style={{color: 'white'}}>UserId: {userPortfolio.userId}</Text>
                     <Text style={{color: 'white'}}>Value: ${userPortfolio.value}</Text>
+                    <TouchableOpacity 
+                        style={styles.button}
+                        onPress={logOut}
+                    >
+                    <Text>Logout</Text>
+                    </TouchableOpacity>
                 </View>
             }
-            <TouchableOpacity 
-                style={styles.button}
-                onPress={logOut}
-            >
-                <Text>Logout</Text>
-            </TouchableOpacity>
+           
         </SafeAreaView>
     )
 }
