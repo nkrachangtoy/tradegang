@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const portfolioScreen = () => {
+const SettingScreen = () => {
     return (
         <View>
             <Text>Portfolio!</Text>
@@ -9,6 +9,6 @@ const portfolioScreen = () => {
     )
 }
 
-export default portfolioScreen
+export default SettingScreen
 
 const styles = StyleSheet.create({})
