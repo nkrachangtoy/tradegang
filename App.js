@@ -16,14 +16,6 @@ const Stack = createStackNavigator()
 
 const App = () => {
 
-  const logOut = async () => {
-    const response = await firebase.auth().signOut()
-    .then(() => console.log('User signed out!'))
-
-    .catch(error => {
-        console.error(error);
-    });
-  }
 
   return (
     <SafeAreaProvider >
