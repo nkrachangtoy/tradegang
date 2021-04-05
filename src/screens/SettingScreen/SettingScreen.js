@@ -1,9 +1,28 @@
-import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import React, {useState, useEffect} from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import firebase from '../../../firebase/firebaseConfig'
+import userdata from '../../api/userdata'
+import requests from '../../api/requests'
+import { set } from 'react-native-reanimated'
 
 const SettingScreen = ({navigation}) => {
+
+    const [userPortfolio, setUserPortfolio] = useState()
+    const [fetching, setFetching] = useState(false)
+
+    const getUserPortfolio = async () => {
+        let result = await userdata.get(requests.userPortfolio)
+        let userData = result.data[0]
+        setUserPortfolio(userData)
+        console.log(userPortfolio)
+    }
+
+    useEffect(() => {
+        getUserPortfolio()
+    }, [])
+
+    //console.log(userPortfolio.userId)
 
     const logOut = async () => {
         const response = await firebase.auth().signOut()
@@ -16,12 +35,21 @@ const SettingScreen = ({navigation}) => {
 
     return (
         <SafeAreaView style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#16171C'}}>
-            <TouchableOpacity 
-                style={styles.button}
-                onPress={logOut}
-            >
-                <Text>Logout</Text>
-            </TouchableOpacity>
+            {fetching ? 
+                <ActivityIndicator size='small' color='#67D9FA' />
+                :  
+                <View>
+                    <Text style={{color: 'white'}}>UserId: {userPortfolio.userId}</Text>
+                    <Text style={{color: 'white'}}>Value: ${userPortfolio.value}</Text>
+                    <TouchableOpacity 
+                        style={styles.button}
+                        onPress={logOut}
+                    >
+                    <Text>Logout</Text>
+                    </TouchableOpacity>
+                </View>
+            }
+           
         </SafeAreaView>
     )
 }
