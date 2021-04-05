@@ -35,10 +35,14 @@ const SettingScreen = ({navigation}) => {
 
     return (
         <SafeAreaView style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#16171C'}}>
-            {fetching ? <Text>Loading..</Text> :  <View>
-                <Text style={{color: 'white'}}>UserId: {userPortfolio.userId}</Text>
-                <Text style={{color: 'white'}}>Value: ${userPortfolio.value}</Text>
-            </View>}
+            {fetching ? 
+                <Text>Loading..</Text> 
+                :  
+                <View>
+                    <Text style={{color: 'white'}}>UserId: {userPortfolio.userId}</Text>
+                    <Text style={{color: 'white'}}>Value: ${userPortfolio.value}</Text>
+                </View>
+            }
             <TouchableOpacity 
                 style={styles.button}
                 onPress={logOut}
