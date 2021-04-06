@@ -53,7 +53,7 @@ const searchScreen = ({navigation}) => {
             />
             <Text style={{fontSize: 20, fontWeight: '900', color: '#fff'}}>Results</Text>
             {fetching ? 
-              <TouchableOpacity onPress={()=>navigation.navigate('StockDetail', {price: currentPrice, symbol: symbol})}>
+              <TouchableOpacity onPress={()=>navigation.navigate('StockDetail', {price: currentPrice, symbol: symbol, name: name})}>
                 <View style={styles.row}>
                   <Text style={styles.symbol}>{name}</Text>
                   <Text style={styles.price}>{currentPrice} USD</Text>

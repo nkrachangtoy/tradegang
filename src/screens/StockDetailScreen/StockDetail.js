@@ -6,7 +6,7 @@ import requests from '../../api/requests'
 import { set } from 'react-native-reanimated'
 
 const StockDetail = ({navigation, route}) => {
-    const {symbol, price} = route.params
+    const {symbol, price, name} = route.params
     const [qty, setQty] = useState(1)
 
     const performBuy = async () => {
@@ -23,8 +23,8 @@ const StockDetail = ({navigation, route}) => {
 
     return (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={{color: 'white'}}>Symbol: {symbol}</Text>
-            <Text style={{color: 'white'}}>Price: {price}</Text>
+            <Text style={{color: 'white', fontSize: 16, fontWeight: '500'}}>Symbol: {symbol}</Text>
+            <Text style={{color: 'white', fontSize: 16, fontWeight: '500'}}>Price: {price}</Text>
             {/* <TouchableOpacity
                 onPress={()=>navigation.navigate('TradeModal')}
             >
@@ -34,7 +34,7 @@ const StockDetail = ({navigation, route}) => {
                 <TouchableOpacity onPress={()=> setQty(q=>q+1)}>
                     <Ionicons name="chevron-up-circle-outline" size={24} color="white" />
                 </TouchableOpacity>
-                <Text style={{color: 'white'}}>{qty}</Text>
+                <Text style={{color: 'white', fontSize: 16, fontWeight: '500', marginLeft: 5, marginRight: 5}}>{qty}</Text>
                 <TouchableOpacity onPress={()=> setQty(q=>q-1)}>
                     <Ionicons name="chevron-down-circle-outline" size={24} color="white" />
                 </TouchableOpacity>
