@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import firebase from '../../../firebase/firebaseConfig'
 import userdata from '../../api/userdata'
 import requests from '../../api/requests'
-import { set } from 'react-native-reanimated'
+
 
 const SettingScreen = ({navigation}) => {
 
@@ -12,10 +12,9 @@ const SettingScreen = ({navigation}) => {
     const [fetching, setFetching] = useState(false)
 
     const getUserPortfolio = async () => {
-        let result = await userdata.get(requests.userPortfolio)
-        let userData = result.data[0]
-        setUserPortfolio(userData)
-        console.log(userPortfolio)
+        let response = await userdata.get(requests.userPortfolio)
+        .then(res => setUserPortfolio(res.data[0]))
+        setFetching(true)
     }
 
     useEffect(() => {
@@ -36,20 +35,19 @@ const SettingScreen = ({navigation}) => {
     return (
         <SafeAreaView style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#16171C'}}>
             {fetching ? 
-                <ActivityIndicator size='small' color='#67D9FA' />
-                :  
                 <View>
                     <Text style={{color: 'white'}}>UserId: {userPortfolio.userId}</Text>
-                    <Text style={{color: 'white'}}>Value: ${userPortfolio.value}</Text>
-                    <TouchableOpacity 
+                    <Text style={{color: 'white'}}>Value: {userPortfolio.value}</Text>
+                </View>
+                :
+                <ActivityIndicator size='small' color='#67D9FA' />
+            }
+           <TouchableOpacity 
                         style={styles.button}
                         onPress={logOut}
                     >
                     <Text>Logout</Text>
                     </TouchableOpacity>
-                </View>
-            }
-           
         </SafeAreaView>
     )
 }

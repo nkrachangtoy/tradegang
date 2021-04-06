@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const searchResult = ({price, symbol}) => {
+const searchResult = ({price, name}) => {
     return (
         <View style={styles.row}>
-            <Text style={styles.symbol}>{symbol}</Text>
+            <Text style={styles.symbol}>{name}</Text>
             <Text style={styles.price}>{price}</Text>
         </View>
     )

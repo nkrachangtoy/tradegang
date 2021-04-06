@@ -30,6 +30,7 @@ const HomeScreen = () => {
                     return <Ionicons name={iconName} size={size} color={color} />;
                 }
             })}
+            initialRouteName="Search"
             tabBarOptions={{
                 activeTintColor: '#487FD9',
                 inactiveTintColor: 'grey',

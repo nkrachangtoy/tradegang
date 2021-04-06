@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput } from 'react-native'
 import { EvilIcons } from '@expo/vector-icons'
 
 
-const searchBar = ({symbol, onSymbolChange, onSymbolSubmit}) => {
+const searchBar = ({quote, onQuoteChange, onQuoteSubmit}) => {
     
 
     return (
@@ -11,13 +11,14 @@ const searchBar = ({symbol, onSymbolChange, onSymbolSubmit}) => {
             <EvilIcons style={styles.icon} name="search" size={24} color='#fff' />
             <TextInput 
             autoCorrect={false}
+            autoCapitalize={false}
             style={styles.input} 
             placeholderTextColor="#D8D8D8"
-            value={symbol}
+            value={quote}
             placeholder="Search"
             // when the text changes update the state variable
-            onChangeText={newSymbol => onSymbolChange(newSymbol)}
-            onSubmitEditing={() => onSymbolSubmit()}
+            onChangeText={newQuote => onQuoteChange(newQuote)}
+            onSubmitEditing={() => onQuoteSubmit()}
             />
         </View>
     )
