@@ -5,7 +5,7 @@ const LandingScreen = ({navigation}) => {
     return (
         <SafeAreaView style={{alignItems: 'center'}}>
             <View style={styles.headerContainer}>
-                <Text style={styles.title}>Welcom to</Text>
+                <Text style={styles.title}>Welcome to</Text>
                 <Text style={styles.title}>TradeGang</Text>
             </View>
             <View style={styles.buttonsWrapper}>
