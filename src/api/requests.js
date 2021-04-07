@@ -3,8 +3,8 @@ const requests = {
     searchBySymbol: `/quote?symbol=`,
     userRegister: `/register`,
     userTransaction: `/transaction`,
-    userPortfolio: `/portfolio/A00890809`,
-    userWatchlist: `/watchlist/A00890809`,
+    userPortfolio: `/portfolio/A00948735`,
+    userWatchlist: `/watchlist/A00948735`,
     watchlist: `/watchlist`
 }
 

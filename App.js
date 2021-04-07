@@ -9,6 +9,7 @@ import LoginScreen from './src/screens/loginScreen/loginScreen'
 import LandingScreen from './src/screens/landingScreen/landingScreen'
 import HomeScreen from './src/screens/HomeScreen/homeScreen'
 import StockDetail from './src/screens/StockDetailScreen/StockDetail'
+import SettingScreen from './src/screens/SettingScreen/SettingScreen'
 
 const Stack = createStackNavigator()
 
@@ -32,6 +33,9 @@ const App = () => {
           headerShown: false
         }}/>
         <Stack.Screen name="Home" component={HomeScreen} options={{
+          headerShown: false
+        }}/>
+        <Stack.Screen name="Setting" component={SettingScreen} options={{
           headerShown: false
         }}/>
         <Stack.Screen 
