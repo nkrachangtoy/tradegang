@@ -45,7 +45,7 @@ const SettingScreen = ({navigation}) => {
 
     useEffect(() => {
         getUserPortfolio()
-    })
+    }, [requests.userPortfolio])
 
 
     const logOut = async () => {
