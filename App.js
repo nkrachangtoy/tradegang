@@ -9,7 +9,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 // Screens
 import SignUpScreen from './src/screens/signUpScreen/signUpScreen'
 import LoginScreen from './src/screens/loginScreen/loginScreen'
-import LandingScreen from './src/screens/landingScreen/landingScreen'
+import LandingScreen from './src/screens/landingScreen/LandingScreen'
 import HomeScreen from './src/screens/HomeScreen/HomeScreen'
 import StockDetail from './src/screens/StockDetailScreen/StockDetail'
 

@@ -10,15 +10,19 @@ const StockDetail = ({navigation, route}) => {
     const [qty, setQty] = useState(1)
 
     const performBuy = async () => {
-        let response = await userdata.post(requests.userTransaction, {
-            "userId": "A00890809",
-            "symbol": symbol,
-            "qty": qty,
-            "price": price,
-            "createdOn": new Date()
-        })
-        .then(res => console.log(res))
-        .catch(e => console.log(e))
+        // console.log(symbol, price)
+        try{
+            let response = await userdata.post(requests.userTransaction, {
+                "userId": "A00890809",
+                "symbol": symbol,
+                "qty": qty,
+                "price": price,
+                "createdOn": new Date()
+            })
+            console.log(response)
+        }catch(error){
+            console.log(error)
+        }      
     }
 
     return (
