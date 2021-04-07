@@ -25,17 +25,17 @@ const SettingScreen = ({navigation}) => {
         return p.isCash === false
     })
 
-    // const performSell = async (s) => {
-    //     let response = await userdata.post(requests.userTransaction, {
-    //         "userId": "A00890809",
-    //         "symbol": s.symbol,
-    //         "qty": -1,
-    //         "price": s.value,
-    //         "createdOn": new Date()
-    //     })
-    //     .then(res => console.log(res))
-    //     .catch(e => console.log(e))
-    // }
+    const performSell = async (x, y) => {
+        let response = await userdata.post(requests.userTransaction, {
+            "userId": "A00890809",
+            "symbol": x,
+            "qty": -1,
+            "price": y,
+            "createdOn": new Date()
+        })
+        .then(res => console.log(res))
+        .catch(e => console.log(e))
+    }
 
     
     //console.log(filteredPositions)
@@ -70,7 +70,7 @@ const SettingScreen = ({navigation}) => {
                         <TouchableOpacity>
                             <Ionicons name="bar-chart" size={24} color='white'/>
                         </TouchableOpacity>
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={()=>performSell(p.symbol, p.value)}>
                         <Ionicons name="md-close-sharp" size={24} color="white" />
                         </TouchableOpacity>
                     </View>)}
