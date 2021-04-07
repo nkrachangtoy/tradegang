@@ -30,7 +30,6 @@ const loginForm = ({navigation}) => {
                 <View style={styles.inputBox}>
                     <AntDesign name="user" size={24} style={styles.icons} />
                     <TextInput 
-                        autoCapitalize={false}
                         value={email}
                         placeholder='Email' 
                         style={styles.input} 

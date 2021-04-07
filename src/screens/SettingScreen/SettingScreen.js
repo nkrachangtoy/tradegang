@@ -26,15 +26,18 @@ const SettingScreen = ({navigation}) => {
     })
 
     const performSell = async (x, y) => {
-        let response = await userdata.post(requests.userTransaction, {
-            "userId": "A00890809",
-            "symbol": x,
-            "qty": -1,
-            "price": y,
-            "createdOn": new Date()
-        })
-        .then(res => console.log(res))
-        .catch(e => console.log(e))
+        try{
+            let response = await userdata.post(requests.userTransaction, {
+                "userId": "A00948735",
+                "symbol": x,
+                "qty": -1,
+                "price": y,
+                "createdOn": new Date()
+            })
+            console.log(response)
+        }catch(e){
+            console.log(e)
+        }
     }
 
     
@@ -42,7 +45,7 @@ const SettingScreen = ({navigation}) => {
 
     useEffect(() => {
         getUserPortfolio()
-    }, [])
+    })
 
 
     const logOut = async () => {
@@ -60,14 +63,15 @@ const SettingScreen = ({navigation}) => {
                 <View>
                 <View style={{marginBottom: 10}}>
                     <Text style={styles.symbol}>UserId: {userPortfolio.userId}</Text>
+                    <Text style={styles.symbol}>Balance: {userPortfolio.value}</Text>
                 </View>
                 <Text style={{fontSize: 20, fontWeight: '900', color: '#fff'}}>Current Positions</Text>
                 {filteredPositions.map(p => 
-                    <View style={styles.row}>
+                    <View style={styles.row} ket={p.positionId}>
                         <Text style={styles.symbol}>{p.symbol}</Text>
                         <Text style={styles.price}>Qty: {p.qty}</Text>
                         <Text style={styles.price}>{p.value} USD</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>navigation.navigate('StockDetail')}>
                             <Ionicons name="bar-chart" size={24} color='white'/>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={()=>performSell(p.symbol, p.value)}>

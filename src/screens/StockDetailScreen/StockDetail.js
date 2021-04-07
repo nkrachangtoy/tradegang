@@ -13,7 +13,7 @@ const StockDetail = ({navigation, route}) => {
         // console.log(symbol, price)
         try{
             let response = await userdata.post(requests.userTransaction, {
-                "userId": "A00890809",
+                "userId": "A00948735",
                 "symbol": symbol,
                 "qty": qty,
                 "price": price,
