@@ -1,11 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
-const homeScreen = ({navigation}) => {
+const LandingScreen = ({navigation}) => {
     return (
         <SafeAreaView style={{alignItems: 'center'}}>
             <View style={styles.headerContainer}>
-                <Text style={styles.title}>Welcom to</Text>
+                <Text style={styles.title}>Welcome to</Text>
                 <Text style={styles.title}>TradeGang</Text>
             </View>
             <View style={styles.buttonsWrapper}>
@@ -24,7 +24,7 @@ const homeScreen = ({navigation}) => {
     )
 }
 
-export default homeScreen
+export default LandingScreen
 
 const styles = StyleSheet.create({
     button: {
