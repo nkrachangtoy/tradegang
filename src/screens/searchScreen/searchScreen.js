@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
+import { Ionicons } from '@expo/vector-icons'
 
 // Components
 import SearchBar from '../../components/searchBar'
@@ -8,7 +9,8 @@ import SearchResult from '../../components/searchResult'
 
 // Requests endpoint
 import finnhub from '../../api/finnhub'
-//import requests from '../../api/requests'
+import requests from '../../api/requests'
+import userdata from '../../api/userdata'
 
 const searchScreen = ({navigation}) => {
     const [quote, setQuote] = useState('')
@@ -34,6 +36,19 @@ const searchScreen = ({navigation}) => {
       setFetching(true)
     }
 
+
+    const addWatchlist = async () => {
+      try {
+          let response = await userdata.post(`/watchlist`, {
+              "userId": "A00948735",
+              "symbol": symbol,
+          })
+      }catch(e){
+          console.log(e)
+      }
+      alert("Added")
+  }
+
     useEffect(() => {
       searchByQuote()
     }, [])
@@ -53,12 +68,17 @@ const searchScreen = ({navigation}) => {
             />
             <Text style={{fontSize: 20, fontWeight: '900', color: '#fff'}}>Results</Text>
             {fetching ? 
-              <TouchableOpacity onPress={()=>navigation.navigate('StockDetail', {price: currentPrice, symbol: symbol, name: name})}>
                 <View style={styles.row}>
                   <Text style={styles.symbol}>{name}</Text>
-                  <Text style={styles.price}>{currentPrice} USD</Text>
-                </View>
-              </TouchableOpacity> : <ActivityIndicator size='small' color='#67D9FA' />} 
+                  <Text style={styles.price}>{currentPrice}</Text>
+                  <TouchableOpacity onPress={()=>navigation.navigate('StockDetail', {price: currentPrice, symbol: symbol, name: name})}>
+                            <Ionicons name="bar-chart" size={18} color='white'/>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={()=>addWatchlist()}>
+                            <Ionicons name="add" size={18} color='white'/>
+                  </TouchableOpacity>
+                </View> : <ActivityIndicator size='small' color='#67D9FA' />}
+             
         </SafeAreaView>
     )
 }

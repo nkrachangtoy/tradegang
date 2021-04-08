@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import userdata from '../../api/userdata'
 import requests from '../../api/requests'
-import { set } from 'react-native-reanimated'
+
 
 const StockDetail = ({navigation, route}) => {
     const {symbol, price, name} = route.params
@@ -25,15 +25,11 @@ const StockDetail = ({navigation, route}) => {
         }      
     }
 
+
     return (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <Text style={{color: 'white', fontSize: 16, fontWeight: '500'}}>Symbol: {symbol}</Text>
             <Text style={{color: 'white', fontSize: 16, fontWeight: '500'}}>Price: {price}</Text>
-            {/* <TouchableOpacity
-                onPress={()=>navigation.navigate('TradeModal')}
-            >
-                <Text style={{color: 'white'}}>Open Trade Modal</Text>
-            </TouchableOpacity> */}
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <TouchableOpacity onPress={()=> setQty(q=>q+1)}>
                     <Ionicons name="chevron-up-circle-outline" size={24} color="white" />
@@ -48,6 +44,7 @@ const StockDetail = ({navigation, route}) => {
                 onPress={()=>performBuy()}>
                 <Text style={{color: '#fff', fontSize: 16, fontWeight: '500'}}>Buy</Text>
             </TouchableOpacity>
+            
         </View>
     )
 }
