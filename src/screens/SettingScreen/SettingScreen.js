@@ -42,6 +42,7 @@ const SettingScreen = ({navigation}) => {
         }catch(e){
             console.log(e)
         }
+        alert(`${x} has been closed`)
     }
 
     const getCurrentPrice = async (symbol) => {
@@ -60,7 +61,7 @@ const SettingScreen = ({navigation}) => {
 
     useEffect(() => {
         getUserPortfolio()
-    }, [requests.userPortfolio])
+    },[])
 
     useEffect(() => {
         getCurrentPrice()
