@@ -5,13 +5,16 @@ import { Ionicons } from '@expo/vector-icons'
 import firebase from '../../../firebase/firebaseConfig'
 import userdata from '../../api/userdata'
 import requests from '../../api/requests'
+import finnhub from '../../api/finnhub'
 
 
 const SettingScreen = ({navigation}) => {
 
+
     const [userPortfolio, setUserPortfolio] = useState()
     const [fetching, setFetching] = useState(false)
     const [currentPositions, setCurrentPositions] = useState([])
+    const [currentPrice, setCurrentPrice] = useState()
 
     const getUserPortfolio = async () => {
         let response = await userdata.get(requests.userPortfolio)
@@ -24,6 +27,7 @@ const SettingScreen = ({navigation}) => {
     const filteredPositions = currentPositions.filter(p => {
         return p.isCash === false
     })
+
 
     const performSell = async (x, y) => {
         try{
@@ -40,12 +44,27 @@ const SettingScreen = ({navigation}) => {
         }
     }
 
+    const getCurrentPrice = async (symbol) => {
+        console.log(symbol)
+        try{
+            const response = await finnhub.get(`/quote?symbol=${symbol}`)
+            setCurrentPrice(response.data.c)
+            setFetching(true)
+        }catch(e){
+            console.log(e)
+        }
+      }
+
     
     //console.log(filteredPositions)
 
     useEffect(() => {
         getUserPortfolio()
     }, [requests.userPortfolio])
+
+    useEffect(() => {
+        getCurrentPrice()
+    }, [])
 
 
     const logOut = async () => {
@@ -63,21 +82,22 @@ const SettingScreen = ({navigation}) => {
                 <View>
                 <View style={{marginBottom: 10}}>
                     <Text style={styles.symbol}>UserId: {userPortfolio.userId}</Text>
-                    <Text style={styles.symbol}>Balance: {userPortfolio.value}</Text>
+                    <Text style={styles.symbol}>Balance: {userPortfolio.value} USD</Text>
                 </View>
                 <Text style={{fontSize: 20, fontWeight: '900', color: '#fff'}}>Current Positions</Text>
-                {filteredPositions.map(p => 
-                    <View style={styles.row} ket={p.positionId}>
+                {filteredPositions.map((p) => 
+                    (<View style={styles.row} key={p.positionId}>
                         <Text style={styles.symbol}>{p.symbol}</Text>
                         <Text style={styles.price}>Qty: {p.qty}</Text>
-                        <Text style={styles.price}>{p.value} USD</Text>
-                        <TouchableOpacity onPress={()=>navigation.navigate('StockDetail')}>
+                        <Text style={styles.price}>{p.value}</Text>
+                        <Text style={styles.price}>{currentPrice}</Text>
+                        {/* <TouchableOpacity onPress={()=>navigation.navigate('StockDetail')}>
                             <Ionicons name="bar-chart" size={24} color='white'/>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                         <TouchableOpacity onPress={()=>performSell(p.symbol, p.value)}>
                         <Ionicons name="md-close-sharp" size={24} color="white" />
                         </TouchableOpacity>
-                    </View>)}
+                    </View>))}
                 </View>
                 :
                 <ActivityIndicator size='small' color='#67D9FA' />
@@ -108,7 +128,7 @@ const styles = StyleSheet.create({
     price: {
         fontWeight: '200',
         color: '#fff',
-        fontSize: 16,
+        fontSize: 12,
         fontWeight: '500'
     },
     row: {
